@@ -1,0 +1,22 @@
+.addInBase {
+  border: 0;
+  background-color: #eeeeee;
+  margin: 25px auto auto auto;
+  font-weight: 500;
+}
+
+.plus {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)),
+    linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), #eeeeee;
+  background-position: center;
+  background-size: 50% 4px, 4px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat: no-repeat;
+}
+
+.radius {
+  border-radius: 50%;
+}
