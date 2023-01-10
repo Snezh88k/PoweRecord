@@ -48,6 +48,7 @@ const ParentCall = (props) => {
     const id = uniqid();
     dispatch(addExercise(nameTra, id));
     dispatch(workClean());
+    setCount({});
     setNameTra({});
 
     alert("Тренировка успешно добавлена");
