@@ -12,7 +12,7 @@ const Datetime = () => {
     showdate.getFullYear();
   return (
     <div style={{ marginLeft: "100px" }}>
-      <input type="text" value={displaytodaydate} readOnly="true" />
+      <span>{displaytodaydate}</span>
     </div>
   );
 };

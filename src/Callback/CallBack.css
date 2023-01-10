@@ -1,22 +1,36 @@
-.addInBase {
+.saveExercise {
   border: 0;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #eeeeee;
-  margin: 25px auto auto auto;
   font-weight: 500;
 }
 
-.plus {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-
-  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)),
-    linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), #eeeeee;
-  background-position: center;
-  background-size: 50% 4px, 4px 50%; /*thickness = 2px, length = 50% (25px)*/
-  background-repeat: no-repeat;
+.saveExerciseDiv {
+  position: absolute;
+  margin-top: 20px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
-.radius {
-  border-radius: 50%;
+.plus_set {
+  margin-top: 5px;
+  background-image: url("../img/plus2.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+.exercise_delete {
+  width: 25px;
+  height: 25px;
+  background-image: url("../img/delete.png");
+  background-size: 25px;
+}
+
+.reps_input {
+  width: 30px;
+  margin-right: 5px;
 }

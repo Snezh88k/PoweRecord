@@ -56,24 +56,29 @@ const ParentCall = (props) => {
   const showBtn = train.length ? "block" : "none";
 
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <p style={{ display: !!showBtn }}>
-          Добавьте упражнения из списка слева
-        </p>
-        <Datetime />
+    <div style={{ position: "relative", height: "100%" }}>
+      <div style={{ display: "flex", width: "100%" }}>
+        <p style={{ margin: "0 auto 10px 10px" }}>Добавьте упражнения.</p>
+        <div style={{ marginLeft: "auto", marginRight: "10px" }}>
+          <Datetime />
+        </div>
       </div>
-
-      {train.map((item) => {
-        return <ChildCall key={item.id} data={item} onChange={handleChange} />;
-      })}
-      <button
-        className="addInBase"
-        style={{ display: showBtn }}
-        onClick={addTrain}
-      >
-        СОХРАНИТЬ ТРЕНИРОВКУ
-      </button>
+      <div style={{ marginBottom: "50px" }}>
+        {train.map((item) => {
+          return (
+            <ChildCall key={item.id} data={item} onChange={handleChange} />
+          );
+        })}
+      </div>
+      <div className="saveExerciseDiv">
+        <button
+          className="saveExercise"
+          style={{ display: showBtn }}
+          onClick={addTrain}
+        >
+          СОХРАНИТЬ ТРЕНИРОВКУ
+        </button>
+      </div>
     </div>
   );
 };

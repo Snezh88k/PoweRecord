@@ -3,3 +3,4 @@ export const TEST = "TEST";
 export const ADDWORK = "ADDWORK";
 export const ADDEXERCISE = "ADDEXERXISE";
 export const CLEANWORK = "CLEANWORK";
+export const DELETE_EXERCISE = "DELETE_EXERCISE";

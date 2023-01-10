@@ -1,4 +1,11 @@
-import { EXERCISE, TEST, ADDWORK, ADDEXERCISE, CLEANWORK } from "./types";
+import {
+  EXERCISE,
+  TEST,
+  ADDWORK,
+  ADDEXERCISE,
+  CLEANWORK,
+  DELETE_EXERCISE,
+} from "./types";
 
 export function exerciseCreate(text, id) {
   return {
@@ -32,5 +39,12 @@ export function addExercise(text, id) {
   return {
     type: ADDEXERCISE,
     data: [text, id],
+  };
+}
+
+export function deleteExercise(id) {
+  return {
+    type: DELETE_EXERCISE,
+    id,
   };
 }

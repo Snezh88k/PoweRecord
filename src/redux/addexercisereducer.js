@@ -11,6 +11,7 @@ export const arrExerciseReducer = (state = initialState, action) => {
         ...state,
         dayExercise: [...state.dayExercise, action.data],
       };
+
     default:
       return state;
   }

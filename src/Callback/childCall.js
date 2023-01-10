@@ -1,55 +1,55 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteExercise } from "../redux/actions";
+import "./CallBack.css";
 
 const ChildCall = ({ data, onChange }) => {
-  console.log("data in childCall", data);
-
   const nameExercise = data.text;
+  const id = data.id;
 
   //Создаем массив и из этого массива создаем новые инпуты
-  const [inp, setInp] = useState([]);
-  const [col, setCol] = useState(0);
+  const [inp, setInp] = useState([0]);
+  const [col, setCol] = useState(1);
 
-  const addInp = (e) => {
+  const addSet = (e) => {
     e.preventDefault();
     const newPut = [...inp, col];
-    console.log(newPut);
     setInp(newPut);
     setCol(col + 1);
-  };
-
-  const [count, setCount] = useState({});
-
-  const addCount = (e) => {
-    setCount({
-      ...count,
-      ...{ [e.target.name]: e.target.value },
-    });
   };
 
   const handleChangeChild = (event) => {
     onChange(event.target.value, nameExercise, event.target.name);
   };
 
-  console.log("count in childCall", count);
+  const dispatch = useDispatch();
+
+  const exerciseDelete = () => {
+    dispatch(deleteExercise(id));
+  };
 
   return (
     <div style={{ color: "white", width: "100%" }}>
-      <p>{nameExercise}</p>
-      <form onChange={addCount}>
-        {inp.map((item, index) => {
-          return (
-            <input
-              style={{ width: "30px", marginRight: "5px" }}
-              type="text"
-              key={item[index]}
-              name={`Подход №${index + 1}`}
-              onChange={handleChangeChild}
-            />
-          );
-        })}
-
-        <button className="plus" onClick={addInp}></button>
-      </form>
+      <div style={{ display: "flex" }}>
+        <p>{nameExercise}</p>
+        <div className="exercise_delete" onClick={exerciseDelete}></div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <form>
+          {inp.map((item, index) => {
+            return (
+              <input
+                className="reps_input"
+                type="text"
+                key={item[index]}
+                name={`Подход №${index + 1}`}
+                onChange={handleChangeChild}
+              />
+            );
+          })}
+        </form>
+        <div className="plus_set" onClick={addSet}></div>
+      </div>
     </div>
   );
 };
