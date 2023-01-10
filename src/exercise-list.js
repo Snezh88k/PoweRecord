@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "reactstrap";
 import "./test.css";
 import uniqid from "uniqid";
 import { workCreate } from "./redux/actions";
@@ -24,8 +23,6 @@ function Example(props) {
     console.log(stateTest);
     console.log("WORKCREATE", base);
   };
-
-  const aa = [1, 2, 3, 4, 5];
 
   return (
     <>

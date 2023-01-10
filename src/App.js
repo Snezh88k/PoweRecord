@@ -1,4 +1,3 @@
-import Test from "./test";
 import Example from "./exercise-list";
 import ParentCall from "./Callback/parentCall";
 import AllWorkouts from "./AllWorkouts/AllWorkouts";
