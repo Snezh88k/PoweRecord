@@ -19,14 +19,59 @@ const ChildCall = ({ data, onChange }) => {
   };
 
   const handleChangeChild = (event) => {
-    onChange(event.target.value, nameExercise, event.target.name);
+    onChange(
+      count,
+      event.target.value,
+      nameExercise,
+      event.target.name,
+      weight
+    );
   };
 
   const dispatch = useDispatch();
 
+  //Удаляем упражение из тренировки по ID
   const exerciseDelete = () => {
     dispatch(deleteExercise(id));
   };
+
+  const [count, setCount] = useState({});
+  const [weight, setWeight] = useState({});
+
+  // const addCount = (e) => {
+  //   setCount({
+  //     ...count,
+  //     ...{ [e.target.name]: e.target.value },
+  //   });
+
+  // const [aaa, setAAA] = useState();
+
+  const addCount = (e) => {
+    console.log("input", col);
+    if (e.target.name.indexOf("wght") !== -1) {
+      // console.log(`${e.target?.name}`);
+      const aaa = e.target?.value;
+      console.log("aaa", aaa);
+      setWeight({
+        ...weight,
+        ...{ [e.target.name]: aaa },
+      });
+    } else {
+      setCount({
+        ...count,
+        ...{ [e.target.name]: e.target.value },
+      });
+    }
+
+    // setGlobal({
+    //   ...global,
+    //   ...{[aaa]: {weight, count}}
+    // })
+    // console.log
+  };
+
+  // console.log("count", count);
+  // console.log("weight", weight);
 
   return (
     <div style={{ color: "white", width: "100%" }}>
@@ -34,22 +79,38 @@ const ChildCall = ({ data, onChange }) => {
         <p>{nameExercise}</p>
         <div className="exercise_delete" onClick={exerciseDelete}></div>
       </div>
-      <div style={{ display: "flex" }}>
-        <form>
+      <div style={{ display: "flex", marginLeft: "10px" }}>
+        <div style={{ marginRight: "5px" }}>
+          <p>Weight</p>
+          <p>Reps</p>
+        </div>
+        <form onChange={addCount}>
           {inp.map((item, index) => {
             return (
-              <input
-                className="reps_input"
-                type="text"
-                key={item[index]}
-                name={`Подход №${index + 1}`}
-                onChange={handleChangeChild}
-              />
+              <div style={{ display: "inline-block" }}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <input
+                    className="reps_input"
+                    type="text"
+                    key={item[index]}
+                    name={`wght${index + 1}`}
+                    onChange={handleChangeChild}
+                  />
+                  <input
+                    className="reps_input"
+                    type="text"
+                    key={item[index]}
+                    name={`reps${index + 1}`}
+                    onChange={handleChangeChild}
+                  />
+                </div>
+              </div>
             );
           })}
         </form>
         <div className="plus_set" onClick={addSet}></div>
       </div>
+      <span></span>
     </div>
   );
 };

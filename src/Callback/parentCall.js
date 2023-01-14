@@ -13,21 +13,24 @@ const ParentCall = (props) => {
 
   const dispatch = useDispatch();
 
-  const [count, setCount] = useState({});
   const [nameTra, setNameTra] = useState({});
 
-  const handleChange = (value, name, evName) => {
+  const handleChange = (count, value, name, evName, weight) => {
+    console.log("---------------------");
+    console.log("count", count);
     console.log("value", value);
     console.log("name", name);
-
     console.log("evName", evName);
+    console.log("weight", weight);
+    console.log("---------------------");
 
     const nextCount = {
+      ...weight,
       ...count,
       ...{ [evName]: value },
     };
 
-    setCount(nextCount);
+    console.log("nextCount", nextCount);
 
     setNameTra({
       ...nameTra,
@@ -35,29 +38,34 @@ const ParentCall = (props) => {
     });
   };
 
-  console.log("Count in Parent", count);
-  console.log("newTra in Parent", nameTra);
+  console.log("nameTra", nameTra);
+  const date = new Date();
 
-  // setCount({
-  //   ...count,
-  //   ...{ [evName]: value },
-  // });
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const minutes = date.getMinutes();
+  const dateArr = [year, month, day, minutes];
 
   const addTrain = (e) => {
     e.preventDefault();
     const id = uniqid();
-    dispatch(addExercise(nameTra, id));
+    dispatch(addExercise(nameTra, id, dateArr));
     dispatch(workClean());
-    setCount({});
     setNameTra({});
 
-    alert("Тренировка успешно добавлена");
+    console.log("Тренировка успешно добавлена");
   };
 
   const showBtn = train.length ? "block" : "none";
 
   return (
-    <div style={{ position: "relative", height: "100%" }}>
+    <div
+      style={{
+        position: "relative",
+        height: "100%",
+      }}
+    >
       <div style={{ display: "flex", width: "100%" }}>
         <p style={{ margin: "0 auto 10px 10px" }}>Добавьте упражнения.</p>
         <div style={{ marginLeft: "auto", marginRight: "10px" }}>
@@ -77,7 +85,7 @@ const ParentCall = (props) => {
           style={{ display: showBtn }}
           onClick={addTrain}
         >
-          СОХРАНИТЬ ТРЕНИРОВКУ
+          Save a workout
         </button>
       </div>
     </div>

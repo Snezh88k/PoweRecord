@@ -35,10 +35,10 @@ export function workClean() {
   };
 }
 
-export function addExercise(text, id) {
+export function addExercise(text, id, date) {
   return {
     type: ADDEXERCISE,
-    data: [text, id],
+    data: [text, id, date],
   };
 }
 
