@@ -1,6 +1,7 @@
 import Example from "./exercise-list";
 import ParentCall from "./Callback/parentCall";
 import AllWorkouts from "./AllWorkouts/AllWorkouts";
+
 import "./style.css";
 
 function App() {

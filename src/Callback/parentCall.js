@@ -59,6 +59,38 @@ const ParentCall = (props) => {
 
   const showBtn = train.length ? "block" : "none";
 
+  //Запросить все тренировки
+
+  async function getUsers() {
+    const respons = await fetch("http://94.228.122.181:3000/wokrout", {
+      method: "GET",
+      headers: { Accept: "application/json" },
+    });
+    if (respons.ok === true) {
+      const workout = await respons.json();
+      console.log(workout);
+    }
+  }
+
+  getUsers();
+
+  //Добавить тренировку
+
+  async function createWorkout(item) {
+    const respons = await fetch("http://94.228.122.181:3000/wokrout", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+    if (respons.ok === true) {
+      const workout = await respons.json();
+    }
+  }
+
+  //---------------------------------------
   return (
     <div
       style={{
@@ -87,6 +119,7 @@ const ParentCall = (props) => {
         >
           Save a workout
         </button>
+        <button onClick={() => createWorkout(nameTra)}>FETCH</button>
       </div>
     </div>
   );
