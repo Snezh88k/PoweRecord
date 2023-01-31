@@ -1,6 +1,6 @@
-import Example from "./exercise-list";
-import ParentCall from "./Callback/parentCall";
-import AllWorkouts from "./AllWorkouts/AllWorkouts";
+import AddExercise from "./Components/All_exercises/All_exercises";
+import CurrentTraining from "./Components/Current_training/Current_training";
+import AllWorkouts from "./Components/Show_training_sessions/AllWorkouts";
 
 import "./style.css";
 
@@ -9,15 +9,12 @@ function App() {
     <div className="App">
       <div className="header"></div>
       <div className="grid_container">
-        {/* <h1 className="logo">Workout</h1> */}
-
         <div className="example">
-          <Example />
+          <AddExercise />
         </div>
         <div className="parentCall">
-          <ParentCall />
+          <CurrentTraining />
         </div>
-
         <div className="allWorkouts">
           <AllWorkouts />
         </div>

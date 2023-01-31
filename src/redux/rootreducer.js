@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { testReducer } from "./testreducer";
-import { workReducer } from "./workreducer";
+import { workoutReducer } from "./workreducer";
 import { arrExerciseReducer } from "./addexercisereducer";
+import { ListOfExercisesReducer } from "./ListOfExercises";
 
 export const rootReducer = combineReducers({
-  testReducer,
-  workReducer,
+  workoutReducer,
   arrExerciseReducer,
+  ListOfExercisesReducer,
 });

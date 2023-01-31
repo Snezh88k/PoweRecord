@@ -17,7 +17,7 @@
 
 .plus_set {
   margin-top: 12px;
-  background-image: url("../img/plus2.png");
+  background-image: url("../../img/plus2.png");
   background-size: 20px;
   background-repeat: no-repeat;
   width: 20px;
@@ -28,7 +28,7 @@
 .exercise_delete {
   width: 25px;
   height: 25px;
-  background-image: url("../img/delete.png");
+  background-image: url("../../img/delete.png");
   background-size: 25px;
   cursor: pointer;
 }

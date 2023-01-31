@@ -4,22 +4,23 @@ const initialState = {
   workout: [],
 };
 
-export const workReducer = (state = initialState, action) => {
-  console.log("Work Reducer>", action);
-
+export const workoutReducer = (state = initialState, action) => {
   switch (action.type) {
+    //Добавляет упражнение в тренировку
     case ADDWORK:
       return {
         ...state,
         workout: [...state.workout, action.data],
       };
 
+    //После добавления тренировки, очищает текущую
     case CLEANWORK:
       return {
         ...state,
         workout: [],
       };
 
+    //Удаление упражнения из тренировки
     case DELETE_EXERCISE:
       const { id } = action;
       const { workout } = state;

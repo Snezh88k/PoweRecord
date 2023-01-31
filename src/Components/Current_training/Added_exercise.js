@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteExercise } from "../redux/actions";
-import "./CallBack.css";
+import { deleteExercise } from "../../redux/actions";
+import "./Current_training.css";
 
 const ChildCall = ({ data, onChange }) => {
   const nameExercise = data.text;
@@ -19,13 +19,7 @@ const ChildCall = ({ data, onChange }) => {
   };
 
   const handleChangeChild = (event) => {
-    onChange(
-      count,
-      event.target.value,
-      nameExercise,
-      event.target.name,
-      weight
-    );
+    onChange(reps, event.target.value, nameExercise, event.target.name, weight);
   };
 
   const dispatch = useDispatch();
@@ -35,43 +29,23 @@ const ChildCall = ({ data, onChange }) => {
     dispatch(deleteExercise(id));
   };
 
-  const [count, setCount] = useState({});
+  const [reps, setReps] = useState({});
   const [weight, setWeight] = useState({});
 
-  // const addCount = (e) => {
-  //   setCount({
-  //     ...count,
-  //     ...{ [e.target.name]: e.target.value },
-  //   });
-
-  // const [aaa, setAAA] = useState();
-
   const addCount = (e) => {
-    console.log("input", col);
     if (e.target.name.indexOf("wght") !== -1) {
-      // console.log(`${e.target?.name}`);
-      const aaa = e.target?.value;
-      console.log("aaa", aaa);
+      const a = e.target?.value;
       setWeight({
         ...weight,
-        ...{ [e.target.name]: aaa },
+        ...{ [e.target.name]: a },
       });
     } else {
-      setCount({
-        ...count,
+      setReps({
+        ...reps,
         ...{ [e.target.name]: e.target.value },
       });
     }
-
-    // setGlobal({
-    //   ...global,
-    //   ...{[aaa]: {weight, count}}
-    // })
-    // console.log
   };
-
-  // console.log("count", count);
-  // console.log("weight", weight);
 
   return (
     <div style={{ color: "white", width: "100%" }}>

@@ -1,36 +1,24 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import ChildCall from "./childCall";
-import { addExercise, workClean } from "../redux/actions";
+import ChildCall from "./Added_exercise";
+import { addExercise, workClean } from "../../redux/actions";
 import uniqid from "uniqid";
-import "./CallBack.css";
-import Datetime from "./data";
+import "./Current_training.css";
+import Datetime from "./Date";
 
-const ParentCall = (props) => {
-  let train = useSelector((state) => state.workReducer.workout);
-
-  console.log("Train in parentCall", train);
+const CurrentTraining = (props) => {
+  let train = useSelector((state) => state.workoutReducer.workout);
 
   const dispatch = useDispatch();
 
   const [nameTra, setNameTra] = useState({});
 
   const handleChange = (count, value, name, evName, weight) => {
-    console.log("---------------------");
-    console.log("count", count);
-    console.log("value", value);
-    console.log("name", name);
-    console.log("evName", evName);
-    console.log("weight", weight);
-    console.log("---------------------");
-
     const nextCount = {
       ...weight,
       ...count,
       ...{ [evName]: value },
     };
-
-    console.log("nextCount", nextCount);
 
     setNameTra({
       ...nameTra,
@@ -38,7 +26,6 @@ const ParentCall = (props) => {
     });
   };
 
-  console.log("nameTra", nameTra);
   const date = new Date();
 
   const day = date.getDate();
@@ -59,38 +46,6 @@ const ParentCall = (props) => {
 
   const showBtn = train.length ? "block" : "none";
 
-  //Запросить все тренировки
-
-  async function getUsers() {
-    const respons = await fetch("http://94.228.122.181:3000/wokrout", {
-      method: "GET",
-      headers: { Accept: "application/json" },
-    });
-    if (respons.ok === true) {
-      const workout = await respons.json();
-      console.log(workout);
-    }
-  }
-
-  getUsers();
-
-  //Добавить тренировку
-
-  async function createWorkout(item) {
-    const respons = await fetch("http://94.228.122.181:3000/wokrout", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item),
-    });
-    if (respons.ok === true) {
-      const workout = await respons.json();
-    }
-  }
-
-  //---------------------------------------
   return (
     <div
       style={{
@@ -119,10 +74,9 @@ const ParentCall = (props) => {
         >
           Save a workout
         </button>
-        <button onClick={() => createWorkout(nameTra)}>FETCH</button>
       </div>
     </div>
   );
 };
 
-export default ParentCall;
+export default CurrentTraining;

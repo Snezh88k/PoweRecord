@@ -1,33 +1,29 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./test.css";
 import uniqid from "uniqid";
-import { workCreate } from "./redux/actions";
-//Comment
-function Example(props) {
+import { workCreate } from "../../redux/actions";
+import "./All_exercises.css";
+
+//Adds an exercise to a workout
+
+function AddExercise(props) {
   const base = useSelector((state) => {
-    const { testReducer } = state;
-    return testReducer.tests;
+    console.log(state);
+    const { ListOfExercisesReducer } = state;
+    return ListOfExercisesReducer.list;
   });
 
-  console.log("base", base);
   const dispatch = useDispatch();
-
-  const stateTest = useSelector((state) => {
-    console.log("stateTest>>>", state);
-  });
 
   const putInWork = (e) => {
     const id = uniqid();
     dispatch(workCreate(base[e.target.value].text, id));
-    console.log(stateTest);
-    console.log("WORKCREATE", base);
   };
 
   return (
     <>
       {base.map((item, index) => (
-        <div style={{ display: "flex", position: "relative" }}>
+        <div key={index} style={{ display: "flex", position: "relative" }}>
           <div className="exercise">{item.text}</div>
           <div>
             <button
@@ -42,4 +38,4 @@ function Example(props) {
   );
 }
 
-export default Example;
+export default AddExercise;

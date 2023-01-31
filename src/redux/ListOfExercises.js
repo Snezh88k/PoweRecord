@@ -1,7 +1,7 @@
-import { TEST } from "./types";
+import { ADDEXERCISEINLIST } from "./types";
 
 const initialState = {
-  tests: [
+  list: [
     { text: "Жим штанги лежа горизонтально" },
     { text: "Жим штанги в наклоне" },
     { text: "Жим гантелей лежа" },
@@ -20,14 +20,12 @@ const initialState = {
   ],
 };
 
-export const testReducer = (state = initialState, action) => {
-  console.log("test Reducer>", action);
-
+export const ListOfExercisesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TEST:
+    case ADDEXERCISEINLIST:
       return {
         ...state,
-        tests: [...state.tests, action.text],
+        list: [...state.list, action.text],
       };
     default:
       return state;

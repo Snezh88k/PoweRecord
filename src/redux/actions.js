@@ -1,6 +1,6 @@
 import {
   EXERCISE,
-  TEST,
+  ADDEXERCISEINLIST,
   ADDWORK,
   ADDEXERCISE,
   CLEANWORK,
@@ -14,9 +14,9 @@ export function exerciseCreate(text, id) {
   };
 }
 
-export function testCreate(text, id) {
+export function ListOfExercisesReducer(text, id) {
   return {
-    type: TEST,
+    type: ADDEXERCISEINLIST,
     text: { text, id },
   };
 }
